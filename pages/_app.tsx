@@ -10,7 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Provider session={pageProps.session}>
         <Header />
-        <Component {...pageProps} />
+        <div className="container mx-auto max-w-2xl my-4">
+          <Component {...pageProps} />
+        </div>
       </Provider>
     </>
   );

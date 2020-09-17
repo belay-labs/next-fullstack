@@ -1,11 +1,21 @@
+import { Session } from "next-auth/client";
+
 import privateRoute from "../lib/auth/privateRoute";
 
-const Private = () => {
+interface Props {
+  session: Session;
+}
+
+const Private = ({ session }: Props) => {
   return (
-    <div className="container mx-auto max-w-2xl">
-      <div className="rounded shadow-lg bg-white px-6 py-4">
-        <div>This is a private page.</div>
-      </div>
+    <div className="rounded shadow-lg bg-white px-6 py-4">
+      <p>
+        You are <strong>{session ? "signed in" : "not signed in"}</strong>.
+      </p>
+      <hr className="my-4" />
+      <p>
+        This is a private page. Only users who are signed in can view this page.
+      </p>
     </div>
   );
 };
