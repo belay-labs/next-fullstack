@@ -86,6 +86,28 @@ const options: InitOptions = {
       profile: any,
       isNewUser: boolean
     ) => {
+      // Save user to database
+      if (user) {
+        const { email, image, name } = user;
+
+        const userAttrs = {
+          email,
+          imgUrl: image,
+          name,
+        };
+
+        const [dbUser, userCreated] = await db.User.findOrCreate({
+          where: { email },
+          defaults: userAttrs,
+        });
+
+        // Update user with new information from oauth if entry already existed
+        if (!userCreated) await dbUser.update(userAttrs);
+
+        // Add user ID to token
+        token.userId = dbUser.id;
+      }
+
       return Promise.resolve(token);
     },
   },
