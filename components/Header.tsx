@@ -69,6 +69,11 @@ const Header = () => {
             />
           </a>
         </Link>
+        <Link href="/api-demo">
+          <a className="ml-4">
+            <HeaderButton text="API" active={router.pathname === "/api-demo"} />
+          </a>
+        </Link>
       </div>
       <div className="flex items-center">
         {session ? (
