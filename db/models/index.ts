@@ -1,11 +1,13 @@
-import { DataTypes, Model, Sequelize } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 
+import { PostFactory } from "./post";
 import { UserFactory } from "./user";
 
 interface DbInterface {
   sequelize: Sequelize;
   Sequelize: any;
   User: any;
+  Post: any;
 }
 
 const sequelize = new Sequelize(process.env.DATABASE_URL!, {
@@ -17,6 +19,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL!, {
 const db: DbInterface = {
   sequelize,
   Sequelize,
+  Post: PostFactory(sequelize, DataTypes),
   User: UserFactory(sequelize, DataTypes),
 };
 

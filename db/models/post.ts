@@ -1,30 +1,25 @@
 import { DataTypes, Model, Optional, Sequelize } from "sequelize";
 
 import { restoreSequelizeAttributesOnClass } from "./helpers";
-import { Post } from "./post";
 
-export interface UserAttributes {
+export interface PostAttributes {
   id: number;
-  email: string;
-  name: string;
-  imgUrl: string;
+  text: string;
+  createdById: number;
 }
 
-export interface UserCreationAttributes
-  extends Optional<UserAttributes, "id"> {}
+export interface PostCreationAttributes
+  extends Optional<PostAttributes, "id"> {}
 
-export class User
-  extends Model<UserAttributes, UserCreationAttributes>
-  implements UserAttributes {
+export class Post
+  extends Model<PostAttributes, PostCreationAttributes>
+  implements PostAttributes {
   public id!: number;
-  public email!: string;
-  public name!: string;
-  public imgUrl!: string;
+  public text!: string;
+  public createdById!: number;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
-
-  public readonly posts!: Post[];
 
   constructor(...args: any[]) {
     super(...args);
@@ -37,41 +32,37 @@ export class User
    * The `models/index` file will call this method automatically.
    */
   static associate(models: any) {
-    User.hasMany(models.Post, {
+    Post.belongsTo(models.User, {
+      as: "createdBy",
       foreignKey: "createdById",
-      as: "posts",
     });
   }
 }
 
-export const UserFactory = (sequelize: Sequelize, DataTypes: any) => {
-  User.init(
+export const PostFactory = (sequelize: Sequelize, DataTypes: any) => {
+  Post.init(
     {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
         primaryKey: true,
       },
-      email: {
+      text: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
       },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      imgUrl: {
-        type: DataTypes.STRING,
+      createdById: {
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "User",
-      tableName: "users",
+      modelName: "Post",
+      tableName: "posts",
     }
   );
 
-  return User;
+  return Post;
 };
