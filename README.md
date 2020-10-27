@@ -1,7 +1,7 @@
 <div align="center">
   <h1>🚲 next-fullstack</h1>
   <p>
-    <strong>A boilerplate for developing full-stack applications with <a href="https://nextjs.org/">Next.js</a></strong>
+    <strong>A lightweight boilerplate for developing full-stack applications with <a href="https://nextjs.org/">Next.js</a></strong>
   </p>
 </div>
 <br />
