@@ -48,7 +48,7 @@ We'll be setting up a database and also OAuth providers in upcoming steps to get
 #### Create a Postgres database
 You can create a Postgres database with any service provider. Make sure it is publicly accessible and is password authenticated.
 
-[See example settings for creating an AWS RDS Postgres database.](docs/aws-rds-example.png)
+👉 [See example settings for creating an AWS RDS Postgres database.](docs/aws-rds-example.png)
 
 After creation, compose the database URL and update your local environment variable file (`.env.local`)
 ```
@@ -70,8 +70,8 @@ These are example models and tables. Feel free to roll back (`yarn sequelize-cli
 #### Set up OAuth providers
 The boilerplate comes set up with Github and Google as OAuth providers, however you are free to [remove or add your own](https://next-auth.js.org/providers/github) by editing the provider entries in the [`[next-auth].ts` file](https://github.com/belay-labs/next-fullstack/blob/master/pages/api/auth/%5B...nextauth%5D.ts#L11) and adding the relevant environment variables. 
 
-[Setting up Google OAuth](https://support.google.com/cloud/answer/6158849?hl=en)\
-[Setting up Github OAuth](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app)
+👉 [Setting up Google OAuth](https://support.google.com/cloud/answer/6158849?hl=en)\
+👉 [Setting up Github OAuth](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app)
 
 
 
@@ -87,7 +87,7 @@ GITHUB_CLIENT_SECRET=[GITHUB_CLIENT_SECRET]
 ```
 yarn dev
 ```
-Go to [localhost:3000](http://localhost:3000/)!
+🚀 Go to [localhost:3000](http://localhost:3000/)!
 
 <br />
 
@@ -106,7 +106,7 @@ Applications developed from this boilerplate can be hosted anywhere. These instr
 
 ## Contributing
 
-**[🐛 Submit a bug](https://github.com/belay-labs/gpt-explorer/issues/new?labels=bug&template=bug_report.md)** | **[🐥 Submit a feature request](https://github.com/belay-labs/gpt-explorer/issues/new?labels=feature-request&template=feature_request.md)**
+**[🐛 Submit a bug](https://github.com/belay-labs/next-fullstack/issues/new?labels=bug&template=bug_report.md)** | **[🐥 Submit a feature request](https://github.com/belay-labs/next-fullstack/issues/new?labels=feature-request&template=feature_request.md)**
 
 #### Review & deployment
  
