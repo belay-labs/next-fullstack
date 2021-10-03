@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "db:create": "sequelize-cli db:create",
+    "db:drop": "sequelize-cli db:drop",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:rollback": "sequelize-cli db:undo",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
